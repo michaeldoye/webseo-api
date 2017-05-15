@@ -24,6 +24,8 @@ _get_ -  `https://api.webseo.co.za/all/@client`
 
 #### Example:
 
+Get all rankings (inlcudes competitors, desktop & mobile rankings) for all available dates.
+
 `get: https://api.webseo.co.za/all/webseo.co.za`
 
 ```json
@@ -59,6 +61,7 @@ _get_ - `https://api.webseo.co.za/increased/@client/@device/@category/@fromDate/
 - Returns: `array` of history objects
 
 #### Example:
+Get desktop keyword rankings that have increased for "category" between 2017-01-01 - 2017-01-30
 
 `get: https://api.webseo.co.za/increased/webseo.co.za/desktop/category/2017-01-01/2017-01-30`
 
