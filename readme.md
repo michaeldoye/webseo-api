@@ -19,7 +19,7 @@ All repsonses return the same format - an array of objects in the following form
 
 _get_ -  `https://api.webseo.co.za/all/@client`
 
-- Accepts: `String` - client URL
+- Accepts: `string` - client URL
 - Returns: `array` of history objects  
 
 #### Example:
@@ -40,9 +40,45 @@ _get_ -  `https://api.webseo.co.za/all/@client`
       "url_found": "https://webseo.co.za/someuri",
       "competitor": null,
       "search_volume": "260"
-    },
-    { ... }
+    }
+  ] 
+}
+```
+<hr>
+
+### getIncreased( $url, $device, $category, $fromDate, $toDate )
+
+_get_ - `https://api.webseo.co.za/increased/@client/@device/@category/@fromDate/@toDate`
+
+- Accepts: 
+  - `string` - client URL
+  - `string` - device (desktop/mobile)
+  - `string` - keyword category name
+  - `string` - from date ('Y-m-d') format
+  - `string` - to date ('Y-m-d') format
+- Returns: `array` of history objects
+
+#### Example:
+
+`get: https://api.webseo.co.za/increased/webseo.co.za/desktop/category/2017-01-01/2017-01-30`
+
+```json
+{
+  "response": [
+    {
+      "id": "6097",
+      "keyword": "ranking keyword",
+      "category": "somecategory",
+      "search_engine": "Google.co.za",
+      "check_date": "2017-05-06",
+      "ranking_change": "+ 9",
+      "current_position": "16",
+      "url_found": "https://webseo.co.za/someuri",
+      "competitor": null,
+      "search_volume": "260"
+    }
   ] 
 }
 ```
 
+<hr>
