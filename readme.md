@@ -56,8 +56,8 @@ _get_ - `https://api.webseo.co.za/increased/@client/@device/@category/@fromDate/
   - `string` - client URL (required)
   - `string` - device (desktop/mobile) (required)
   - `string` - keyword category name (optional)
-  - `string` - from date ('Y-m-d') format (required)
-  - `string` - to date ('Y-m-d') format (required)
+  - `string` - from date ('Y-MM-DD') format (required)
+  - `string` - to date ('Y-MM-DD') format (required)
 - Returns: `array` of history objects
 
 #### Example:
