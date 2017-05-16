@@ -61,9 +61,9 @@ _get_ - `https://api.webseo.co.za/increased/@client/@device/@category/@fromDate/
 - Returns: `array` of history objects
 
 #### Example:
-Get desktop keyword rankings that have increased for "category" between _2017-01-01_ and _2017-01-30_
+Get desktop keyword rankings that have increased between _2017-01-01_ and _2017-01-30_
 
-`get: https://api.webseo.co.za/increased/webseo.co.za/desktop/category/2017-01-01/2017-01-30`
+`get: https://api.webseo.co.za/increased/webseo.co.za/desktop/2017-01-01/2017-01-30`
 
 ```json
 {
