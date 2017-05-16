@@ -162,7 +162,7 @@ class RankTrackerKeywords {
         // Table Name (from client URL)
         $table_name = str_replace('.', '_', $_GET['url']);
         // Open connection to DB
-        $link = new PDO('mysql:host=localhost;dbname=websexyo_api;charset=utf8', 'websexyo_social', 'lv$uSwg3n,O3');
+        $link = new PDO(HOST, USER, PASS);
         // Show errors
         $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         // Start transaction
@@ -214,7 +214,7 @@ class RankTrackerKeywords {
             // Table Name (from client URL)
             $table_name = str_replace('.', '_', $_GET['url']);
             // Open connection to DB
-            $link = new PDO('mysql:host=localhost;dbname=websexyo_api;charset=utf8', 'websexyo_social', 'lv$uSwg3n,O3');
+            $link = new PDO(HOST, USER, PASS);
             // Show errors
             $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // SQL
