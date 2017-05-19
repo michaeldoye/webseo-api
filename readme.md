@@ -152,7 +152,7 @@ Get keyword ranking history for keyword _'seo'_
         "name": "competitor_name"
       },
       "competitor1": {
-        "change": "- 5,"
+        "change": "- 5",
         "currentPosition": 10,
         "name": "competitor_name"
       },
