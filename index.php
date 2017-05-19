@@ -23,6 +23,8 @@ Flight::route( '/all/@client', array( $clientRankings, 'getAll' ) );
 Flight::route( '/increased/@client/@device(/@category)/@fromDate/@toDate', array( $clientRankings, 'getIncreased' ) );
 // Routes: Get increased all (@client)
 Flight::route( '/history/@client(/@device)(/@category)/@keyword(/@fromDate)(/@toDate)', array( $clientRankings, 'getKeywordHistory' ) );
+// Routes: Get tabledata for (@client)
+Flight::route( '/tabledata/@client(/@device)(/@category)', array( $clientRankings, 'getTableData' ) );
 
 // Class definition
 class RankTrackerKeywords {
@@ -252,7 +254,7 @@ class RankTrackerKeywords {
             // Show errors
             $link->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             // SQL query
-            $sql ="SELECT * FROM ".$table_name;
+            $sql = "SELECT * FROM ".$table_name;
             // Prepare query
             $statement = $link->prepare( $sql );
             // Execute query
@@ -311,6 +313,7 @@ class RankTrackerKeywords {
 
 	// getKeywordHistory
     public function getKeywordHistory( $url, $device, $category, $keyword, $fromDate, $toDate ) {
+
         try {
         	// Default to 'desktop'
         	if ( ! $device || $device === '' ) { $device = 'desktop'; };
@@ -351,10 +354,96 @@ class RankTrackerKeywords {
             // Return error
             echo json_encode( array( 'response' => $e->getMessage() ) );
         }
+
     }
+
+    // getAll
+    public function getTableData( $url, $device, $category ) {
+
+        try {
+            // Keyword Catgory
+            $cat = isset($category) ? $category : '';
+        	// Search Type
+        	$search_type = $device === 'desktop' ? '(Mobile)' : '(Mobile)';
+        	// Conditional for WHERE clause
+        	$not = $device === 'desktop' ? 'NOT' : '';      	
+            // Table Name (from client URL)
+            $table_name = str_replace( '.', '_', $url );
+            // Open connection to DB
+            $link = new PDO( HOST, USER, PASS );
+            // Show errors
+            $link->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            // SQL query
+            $sql = "SELECT competitor 
+            		FROM {$table_name} 
+            		GROUP BY competitor";
+            // Prepare query
+            $statement = $link->prepare( $sql );
+            // Execute query
+            $statement->execute();
+            // Result
+            $result = $statement->fetchAll( PDO::FETCH_OBJ );
+
+            $resultNew = array();
+
+            foreach ( $result as $key => $value ) {
+
+            	$valToUse = $value->competitor === NULL ? $url : $value->competitor;
+
+            	if ( ! $value->competitor || $value->competitor === NULL ) {
+            		$sql2 = "SELECT ranking_change AS `change`, current_position AS `currentPosition`, competitor AS `name`, keyword, search_volume
+	        				FROM {$table_name} 
+	        				WHERE url_found LIKE '%{$url}%' OR url_found = 'Array'
+	        				AND search_engine {$not} LIKE '%{$search_type}'
+                            AND category LIKE '%{$cat}%'
+	        				GROUP BY keyword 
+	        				ORDER BY check_date DESC";
+            	}
+            	else {
+					$sql2 = "SELECT ranking_change AS `change`, current_position AS `currentPosition`, competitor AS `name`, keyword, search_volume
+							FROM {$table_name} 
+							WHERE competitor = '{$valToUse}' 
+							AND search_engine {$not} LIKE '%{$search_type}' 
+                            AND category LIKE '%{$cat}%'
+							GROUP BY keyword 
+							ORDER BY check_date DESC";            		
+            	}
+            	
+	            // Prepare query
+	            $statement = $link->prepare( $sql2 );
+	            // Execute query
+	            $statement->execute();
+	            // Result
+	            $resultNew[] = $statement->fetchAll( PDO::FETCH_OBJ );	            		
+            }
+
+            $resultArray = array();
+
+            foreach ( $resultNew as $key => $value ) {
+            	foreach ( $value as $n_key => $n_value ) {
+
+            		$resultArray[ $n_key ]['keyword'] 	  = $n_value->keyword;
+            		$resultArray[ $n_key ]['volume'] 	  = ( int )$n_value->search_volume;
+            		$resultArray[ $n_key ]['myrankings']  = $resultNew[0][ $n_key ];
+            		$resultArray[ $n_key ]['competitor1'] = $resultNew[1][ $n_key ];
+            		$resultArray[ $n_key ]['competitor2'] = $resultNew[2][ $n_key ];
+            		$resultArray[ $n_key ]['competitor3'] = $resultNew[3][ $n_key ];
+            	}
+            }        
+           
+            // Return response
+            echo json_encode( array( 'response' => $resultArray ) );
+
+        } catch( PDOException $e ) {
+            // Return error
+            echo json_encode( array( 'response' => $e->getMessage() ) );
+        }
+
+    }    
 
     // xmlToArray
     public function xmlToArray( $xml, $options = array() ) {
+
         $defaults = array(
             'namespaceSeparator' => ':',//you may want this to be something other than a colon
             'attributePrefix' => '@',   //to distinguish between attributes and nodes with the same name

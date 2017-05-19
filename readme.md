@@ -124,3 +124,51 @@ Get keyword ranking history for keyword _'seo'_
 ```
 
 <hr>
+
+### getTableData( $url, $device, $category )
+
+_get_ - `https://api.webseo.co.za/history/@client(/@device)(/@category)/@keyword(/@fromDate)(/@toDate)`
+
+- Accepts: 
+  - `string` - client URL (required)
+  - `string` - device (desktop/mobile) (optional) - default: desktop
+  - `string` - keyword category name (optional)
+- Returns: `array` of objects
+
+#### Example:
+Get keyword ranking history for keyword _'seo'_
+
+`get: https://api.webseo.co.za/tabledata/webseo.co.za`
+
+```json
+{
+  "response": [
+    {
+      "keyword": "somekeyword",
+      "volume": 500,
+      "myrankings": {
+        "change": + 10,
+        "currentPosition": 1,
+        "name": "competitor_name"
+      },
+      "competitor1": {
+        "change": - 5,
+        "currentPosition": 10,
+        "name": "competitor_name"
+      },
+      "competitor2": {
+        "change": "stays out",
+        "currentPosition": 50,
+        "name": "competitor_name"
+      },
+      "competitor3": {
+        "change": "entered",
+        "currentPosition": 5,
+        "name": "competitor_name"
+      }                    
+    }
+  ] 
+}
+```
+
+<hr>
