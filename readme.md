@@ -17,7 +17,7 @@ All repsonses return the same format: - an array of objects in the following for
 
 ### getAll( $url )
 
-_get_ -  `https://api.webseo.co.za/all/@client`
+_get_ -  `https://webseo.co.za/api/all/@client`
 
 - Accepts: `string` - client URL (required)
 - Returns: `array` of history objects  
@@ -26,7 +26,7 @@ _get_ -  `https://api.webseo.co.za/all/@client`
 
 Get all rankings (includes competitors, desktop & mobile rankings) for all available dates.
 
-`get: https://api.webseo.co.za/all/webseo.co.za`
+`get: https://webseo.co.za/api/all/webseo.co.za`
 
 ```json
 {
@@ -50,7 +50,7 @@ Get all rankings (includes competitors, desktop & mobile rankings) for all avail
 
 ### getIncreased( $url, $device, $category, $fromDate, $toDate )
 
-_get_ - `https://api.webseo.co.za/increased/@client/@device/@category/@fromDate/@toDate`
+_get_ - `https://webseo.co.za/api/increased/@client/@device/@category/@fromDate/@toDate`
 
 - Accepts: 
   - `string` - client URL (required)
@@ -63,7 +63,7 @@ _get_ - `https://api.webseo.co.za/increased/@client/@device/@category/@fromDate/
 #### Example:
 Get desktop keyword rankings that have increased between _2017-01-01_ and _2017-01-30_
 
-`get: https://api.webseo.co.za/increased/webseo.co.za/desktop/2017-01-01/2017-01-30`
+`get: https://webseo.co.za/api/increased/webseo.co.za/desktop/2017-01-01/2017-01-30`
 
 ```json
 {
@@ -88,7 +88,7 @@ Get desktop keyword rankings that have increased between _2017-01-01_ and _2017-
 
 ### getKeywordHistory( $url, $device, $category, $keyword, $fromDate, $toDate )
 
-_get_ - `https://api.webseo.co.za/history/@client(/@device)(/@category)/@keyword(/@fromDate)(/@toDate)`
+_get_ - `https://webseo.co.za/api/history/@client(/@device)(/@category)/@keyword(/@fromDate)(/@toDate)`
 
 - Accepts: 
   - `string` - client URL (required)
@@ -102,7 +102,7 @@ _get_ - `https://api.webseo.co.za/history/@client(/@device)(/@category)/@keyword
 #### Example:
 Get keyword ranking history for keyword _'seo'_
 
-`get: https://api.webseo.co.za/history/webseo.co.za/seo`
+`get: https://webseo.co.za/api/history/webseo.co.za/seo`
 
 ```json
 {
@@ -127,7 +127,7 @@ Get keyword ranking history for keyword _'seo'_
 
 ### getTableData( $url, $device, $category )
 
-_get_ - `https://api.webseo.co.za/tabledata/@client(/@device)(/@category)`
+_get_ - `https://webseo.co.za/api/tabledata/@client(/@device)(/@category)`
 
 - Accepts: 
   - `string` - client URL (required)
@@ -138,7 +138,7 @@ _get_ - `https://api.webseo.co.za/tabledata/@client(/@device)(/@category)`
 #### Example:
 Get keyword ranking history for keyword _'seo'_
 
-`get: https://api.webseo.co.za/tabledata/webseo.co.za`
+`get: https://webseo.co.za/api/tabledata/webseo.co.za`
 
 ```json
 {
