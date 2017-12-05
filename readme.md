@@ -172,3 +172,65 @@ Get keyword ranking history for keyword _'seo'_
 ```
 
 <hr>
+
+### All Endpoints
+```PHP
+// Routes: Default
+Flight::route( '/import/@client/@searchengine/@category', array( $clientRankings, 'dirToArray' ) );
+// Routes: Get all for (@client)
+Flight::route( '/all/@client', array( $clientRankings, 'getAll' ) );
+// Routes: Get increased (@client)
+Flight::route( '/increased/@client/@device(/@category)/@fromDate/@toDate', array( $clientRankings, 'getIncreased' ) );
+// Routes: Get decreased (@client)
+Flight::route( '/decreased/@client/@device(/@category)/@fromDate/@toDate', array( $clientRankings, 'getDecreased' ) );
+// Routes: Get positions (@client)
+Flight::route( '/positions/@client/@device(/@category)/@fromDate/@toDate/@position', array( $clientRankings, 'getTopPositions' ) );
+// Routes: Get positions (@client)
+Flight::route( '/positionsdist/@client/@device(/@category)/@fromDate/@toDate', array( $clientRankings, 'getTopPositionsDistribution' ) );
+// Routes: Get increased all (@client)
+Flight::route( '/kwordcount/@client(/@device)', array( $clientRankings, 'getAll' ) );
+// Routes: Get increased all (@client)
+Flight::route( '/history/@client(/@device)(/@category)/@keyword(/@fromDate)(/@toDate)', array( $clientRankings, 'getKeywordHistory' ) );
+// Routes: Get tabledata for (@client)
+Flight::route( '/tabledata/@client(/@device)(/@fromDate)(/@toDate)(/@category)', array( $clientRankings, 'getTableData' ) );
+// Routes: Get Min and Max dates
+Flight::route( '/daterange/@client', array( $clientRankings, 'getMinMaxDates' ) );
+// Routes: Get competitor names
+Flight::route( '/competitors/@client', array( $clientRankings, 'getCompetitorNames' ) );
+// Routes: Get Min and Max dates
+Flight::route( '/messages/@key/@from(/@subject)(/@message)(/@name)', array( $clientRankings, 'sendMail' ) );
+// Routes: getAllAnlyticsWidgetChartData
+Flight::route( '/allanalytics/@client(/@dateType)(/@metric)(/@fromDate)(/@toDate)', array( $gaApi, 'getAllAnlyticsWidgetChartData' ) );
+// Routes: getAllAnlyticsWidget1
+Flight::route( '/chartwidget1/@client(/@dateType)(/@metric)(/@fromDate)(/@toDate)', array( $gaApi, 'getAllAnlyticsWidget1' ) );
+// Routes: getAllAnlyticsWidget2
+Flight::route( '/chartwidget2/@client(/@dateType)(/@metric)(/@fromDate)(/@toDate)', array( $gaApi, 'getAllAnlyticsWidget2' ) );
+// Routes: getAllAnlyticsWidget3
+Flight::route( '/chartwidget3/@client(/@dateType)(/@metric)(/@fromDate)(/@toDate)', array( $gaApi, 'getAllAnlyticsWidget3' ) );
+// getMiscStats
+Flight::route( '/miscanalytics/@client(/@dateType)(/@fromDate)(/@toDate)', array( $gaApi, 'getMiscStats' ) );
+// getAdwordsStats
+Flight::route( '/adwords/@client(/@dateType)(/@fromDate)(/@toDate)', array( $gaApi, 'getAdwordsStats' ) );
+// getTrafficSourceData
+Flight::route( '/trafficsource/@client(/@fromDate)(/@toDate)', array( $gaApi, 'getTrafficSourceData' ) );
+// getAudienceData
+Flight::route( '/audience/@client(/@fromDate)(/@toDate)', array( $gaApi, 'getAudienceData' ) );
+// fbGetPageImpressions
+Flight::route( '/fbimpressions/@pageid', array( $fbApi, 'fbGetPageImpressions' ) );
+// fbGetLifeTimePageLikes
+Flight::route( '/fblikes/@pageid', array( $fbApi, 'fbGetLifeTimePageLikes' ) );
+// fbGetLifeTimePageLikesByCountry
+Flight::route( '/fblikescountry/@pageid', array( $fbApi, 'fbGetLifeTimePageLikesByCountry' ) );
+// fbGetPagePosts
+Flight::route( '/fbposts/@pageid', array( $fbApi, 'fbGetPagePosts' ) );
+// fbGetPostData
+Flight::route( '/fbpost/@postid', array( $fbApi, 'fbGetPostData' ) );
+// fbGetTotalPageViews
+Flight::route( '/fbpageviews/@pageid', array( $fbApi, 'fbGetTotalPageViews' ) );
+// fbGetEngagedUsers
+Flight::route( '/fbengaged/@pageid', array( $fbApi, 'fbGetEngagedUsers' ) );
+// fbGetPageViews
+Flight::route( '/fballpageviews/@pageid', array( $fbApi, 'fbGetPageViews' ) );
+// cpcByGroup
+Flight::route( '/adwordsmbag/@client/@metric/@dim(/@fromDate)(/@toDate)', array( $awApi, 'getMetricByAdGroup' ) );
+```

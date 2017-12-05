@@ -52,13 +52,13 @@ Flight::route( '/daterange/@client', array( $clientRankings, 'getMinMaxDates' ) 
 Flight::route( '/competitors/@client', array( $clientRankings, 'getCompetitorNames' ) );
 // Routes: Get Min and Max dates
 Flight::route( '/messages/@key/@from(/@subject)(/@message)(/@name)', array( $clientRankings, 'sendMail' ) );
-// Routes: allanalytics
+// Routes: getAllAnlyticsWidgetChartData
 Flight::route( '/allanalytics/@client(/@dateType)(/@metric)(/@fromDate)(/@toDate)', array( $gaApi, 'getAllAnlyticsWidgetChartData' ) );
-// Routes: allanalytics
+// Routes: getAllAnlyticsWidget1
 Flight::route( '/chartwidget1/@client(/@dateType)(/@metric)(/@fromDate)(/@toDate)', array( $gaApi, 'getAllAnlyticsWidget1' ) );
-// Routes: allanalytics
+// Routes: getAllAnlyticsWidget2
 Flight::route( '/chartwidget2/@client(/@dateType)(/@metric)(/@fromDate)(/@toDate)', array( $gaApi, 'getAllAnlyticsWidget2' ) );
-// Routes: allanalytics
+// Routes: getAllAnlyticsWidget3
 Flight::route( '/chartwidget3/@client(/@dateType)(/@metric)(/@fromDate)(/@toDate)', array( $gaApi, 'getAllAnlyticsWidget3' ) );
 // getMiscStats
 Flight::route( '/miscanalytics/@client(/@dateType)(/@fromDate)(/@toDate)', array( $gaApi, 'getMiscStats' ) );
@@ -72,9 +72,9 @@ Flight::route( '/audience/@client(/@fromDate)(/@toDate)', array( $gaApi, 'getAud
 Flight::route( '/fbimpressions/@pageid', array( $fbApi, 'fbGetPageImpressions' ) );
 // fbGetLifeTimePageLikes
 Flight::route( '/fblikes/@pageid', array( $fbApi, 'fbGetLifeTimePageLikes' ) );
-// fbGetLifeTimePageLikes
+// fbGetLifeTimePageLikesByCountry
 Flight::route( '/fblikescountry/@pageid', array( $fbApi, 'fbGetLifeTimePageLikesByCountry' ) );
-// fbGetLifeTimePageLikes
+// fbGetPagePosts
 Flight::route( '/fbposts/@pageid', array( $fbApi, 'fbGetPagePosts' ) );
 // fbGetPostData
 Flight::route( '/fbpost/@postid', array( $fbApi, 'fbGetPostData' ) );
