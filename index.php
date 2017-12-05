@@ -964,56 +964,6 @@ class RankTrackerKeywords {
     }
 
 
-    /**
-     * Send my via PHP mail() 
-     * 
-     * @param client key
-     * @param from address
-     * @param message subject    
-     * @param message content
-     * @param sender name
-     *               
-     * @return success or failure response message.
-     */ 
-    public function sendMail( $clientKey, $from, $subject, $message, $name ) {
-        $errors = '';
-        $key = 'ce43259f2792e045c5099df7fbd8f61c';
-        
-        if( empty( $errors ) && $clientKey === $key) {
-        
-            $from_email = filter_var( base64_decode( $from ), FILTER_VALIDATE_EMAIL );
-            $message    = filter_var( $message, FILTER_SANITIZE_STRING );
-            $from_name  = filter_var( $name, FILTER_SANITIZE_STRING );
-            $m_subject  = filter_var( $subject, FILTER_SANITIZE_STRING );
-            $to_email   = 'affiliate@mintbet.com';
-            
-            $contact = "<p><strong>Name:</strong> $from_name</p>
-                        <p><strong>Email:</strong> $from_email</p>";
-            $content = "<p>$message</p>";
-        
-            $website = 'MintBet.com Affiliate';
-            $email_subject = $m_subject;
-        
-            $email_body = '<html><body>';
-            $email_body .= "$contact $content";
-            $email_body .= '</body></html>';
-        
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-            $headers .= "From: $from_name\n";
-            $headers .= "Reply-To: $from_email";
-        
-            mail( $to_email, $email_subject, $email_body, $headers );
-        
-            $response_array['status'] = 'success';
-            echo json_encode( $response_array );
-       } else {
-           $response_array['status'] = 'error';
-           echo json_encode( $response_array );
-       }        
-    }
-
-
 }
 
 // Start api router
