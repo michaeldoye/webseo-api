@@ -16,7 +16,7 @@ class FacebookInsightsAPI {
 			'app_id' => '1091642577577897',
 			'app_secret' => 'b157e2375bfb8e22175c8479a3e0a2d1',
 			'default_graph_version' => 'v2.10',
-			'default_access_token' => 'EAAPg19gO56kBAH161N4v4mUeQHReACNcM7dpImCZAoMYT58zfq9hVE28ZBJBAoVkXqWEbeSs7FsY72zHSxlLyvQGvKGQSgEcWHaM35de51YbmtlyQZBgZCNMPwn9G3FvY6G7f5oML1mxlYY4WxQkiIzGq6csZCdUZD', // optional
+			'default_access_token' => 'xxx', // optional
 		]);
 	}
 
