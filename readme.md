@@ -1,6 +1,6 @@
 # API Documentation
 
-All repsonses return the same format - an array of objects in the following format:
+All repsonses return the same format: - an array of objects in the following format:
 
 - `id`: row id
 - `keyword`: the ranking keyword
